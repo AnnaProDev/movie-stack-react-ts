@@ -1,0 +1,63 @@
+.grid {
+	display: grid;
+	grid-template-columns: repeat(6, minmax(0, 1fr));
+	gap: 24px;
+}
+
+.card {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+.posterImg {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.2s ease;
+}
+
+.posterLink {
+	position: absolute;
+	inset: 0;
+	display: block;
+	text-decoration: none;
+	color: inherit;
+	border-radius: inherit;
+}
+
+.posterFrame {
+	position: relative;
+	padding-top: 150%;
+	border-radius: 16px;
+	overflow: hidden;
+	background-color: var(--card-bg);
+}
+
+.badge {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	font-size: 14px;
+	font-weight: 600;
+	background-color: #fff;
+	position: absolute;
+	bottom: 12px;
+	right: 12px;
+}
+.cardTitleLink {
+	display: inline-block;
+	text-decoration: none;
+	color: inherit;
+}
+
+.cardTitle {
+	margin: 0;
+	font-size: 16px;
+	font-weight: 500;
+	color: var(--text-primary);
+}
