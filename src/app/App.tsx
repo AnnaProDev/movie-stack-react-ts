@@ -8,7 +8,9 @@ function App() {
 		<>
 			<div className={s.container}>
 				<Header />
-				<Routing />
+				<div className={s.mainContent}>
+					<Routing />
+				</div>
 				<Footer />
 			</div>
 		</>

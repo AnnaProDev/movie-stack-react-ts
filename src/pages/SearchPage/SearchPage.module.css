@@ -1,5 +1,5 @@
 .section {
-	margin-top: 40px;
+	padding-top: 40px;
 	padding-block: 32px;
 	margin: 0 auto;
 	height: 100%;
@@ -35,11 +35,11 @@
 }
 
 .button {
-	padding: 12px 20px;
+	padding: 10px 20px;
 	border-radius: 999px;
 	border: none;
-	background-color: var(--accent-hover);
-	color: var(--text-primary);
+	background-color: var(--accent);
+	color: var(--color-white);
 	cursor: pointer;
 	transition: background-color 0.2s ease;
 	font-weight: 600;

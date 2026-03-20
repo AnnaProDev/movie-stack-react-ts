@@ -47,8 +47,6 @@ body {
 	-ms-text-size-adjust: 100%;
 	-moz-text-size-adjust: 100%;
 	-webkit-text-size-adjust: 100%;
-	background-color: var(--bg-secondary);
-	color: var(--text-primary);
 }
 
 input,
@@ -100,18 +98,18 @@ h6 {
 /*GLOBAL VARIABLES*/
 
 :root {
-	--bg-primary: #fdfaf5;
-	--bg-secondary: #ffffff;
-	--bg-card: #f0f4f0;
-	--accent: #1b4332;
-	--accent-hover: #b68d59;
+	--bg-primary: ##FAF6EF;
+	--bg-secondary: #F0E8D8;
+	--bg-card: #FFFFFF;
+	--accent: #B85C2A;
+	--accent-hover: #2A6BB8;
 	--accent-soft: rgba(27, 67, 50, 0.1);
-	--nav-link-hover: #2d6a4f;
+	--color-white: #fff;
 
-	--text-primary: #081c15;
-	--text-secondary: #40514e;
+	--text-primary: #2C1810;
+	--text-secondary: #8A6A50;
 
-	--border: rgba(27, 67, 50, 0.15);
+	--border: rgba(184, 92, 42, 0.15);
 	--color-green-600: #16a34a;
 	--color-yellow-400: #facc15;
 	--color-red-600: #dc2626;

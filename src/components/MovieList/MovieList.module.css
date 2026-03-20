@@ -1,7 +1,9 @@
-.section {
-	padding-top: 40px;
-	margin: 0px auto;
+.grid {
 	width: 1186px;
+	margin-top: 20px;
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	gap: 24px;
 }
 
 .header {
