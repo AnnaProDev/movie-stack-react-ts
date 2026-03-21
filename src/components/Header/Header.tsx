@@ -2,6 +2,11 @@ import { NavLink } from "react-router";
 import { Path } from "@/common/routing/Routing";
 import s from "./Header.module.css";
 import tmdbLogo from "../../assets/tmdb-logo.svg";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleTheme } from "@/store/themeSlice";
+import { useEffect } from "react";
+import type { RootState } from "../../store/store";
+
 
 const navItems = [
 	{ to: Path.Main, label: "Main" },
@@ -12,6 +17,15 @@ const navItems = [
 ];
 
 export const Header = () => {
+	const theme = useSelector((state: RootState) => {
+		return state.theme.mode;
+	});
+
+	useEffect(() => {
+		document.body.setAttribute("data-theme", theme);
+	}, [theme]);
+	const dispatch = useDispatch();
+
 	return (
 		<header className={s.container}>
 			<nav className={s.nav}>
@@ -30,6 +44,15 @@ export const Header = () => {
 						</li>
 					))}
 				</ul>
+				<button
+					onClick={() => dispatch(toggleTheme())}
+					type="button"
+					className={s.buttonTheme}
+					aria-label="Переключить на тёмную тему"
+					title="Переключить на тёмную тему"
+				>
+					{theme === "light" ? "🌙" : "☀️"}
+				</button>
 			</nav>
 		</header>
 	);

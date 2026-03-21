@@ -48,3 +48,19 @@
 	color: var(--accent);
 	font-weight: 600;
 }
+
+.buttonTheme {
+	width: 40px;
+	height: 40px;
+	min-width: 40px;
+	padding: 0;
+	border-radius: 999px;
+	border-color: var(--accent);
+	background-color: var(--bg-primary);
+	font-size: 20px;
+	transition:
+		background-color 0.2s ease,
+		border-color 0.2s ease,
+		color 0.2s ease,
+		transform 0.2s ease;
+}

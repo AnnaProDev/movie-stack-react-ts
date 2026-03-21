@@ -1,17 +1,43 @@
 .section {
-	padding-top: 40px;
-	margin: 0px auto;
-	width: 1186px;
+	position: relative;
+	width: 100vw;
+	margin-left: calc(50% - 50vw);
+	margin-right: calc(50% - 50vw);
+	height: 700px;
+	display: flex;
+	align-items: center;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.mainContent {
+	margin: 0 auto;
+	padding: 0 24px;
+	width: 100%;
+	max-width: 1200px;
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
 }
 
 .header {
+	position: absolute;
+	top: 30%;
+	left: 200px;
 	display: flex;
-	align-items: center;
+	flex-direction: column;
 	justify-content: space-between;
+	gap: 10px;
+	color: var(--color-white);
 }
 
 .title {
+	font-size: 48px;
+	font-weight: 800;
+}
+
+.subtitle {
 	font-size: 24px;
 	font-weight: 600;
-	color: var(--text-primary);
 }

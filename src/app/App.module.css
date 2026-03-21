@@ -4,11 +4,10 @@
 	align-items: center;
 	justify-content: space-between;
 	min-height: 100vh;
+	background-color: var(--bg-primary);
 }
 
 .mainContent{
 	flex: 1;
-	background-color: var(--bg-primary);
-	padding: 40px 0;
 }
 

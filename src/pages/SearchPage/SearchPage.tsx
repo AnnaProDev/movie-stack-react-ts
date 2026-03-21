@@ -7,7 +7,7 @@ export const SearchPage = () => {
 				<div className={s.header}>
 					<h2 className={s.title}>Search Results</h2>
 				</div>
-				<form action="" className={s.form}>
+				<form action="/search" className={s.form}>
 					<input
 						type="search"
 						className={s.input}
