@@ -13,6 +13,7 @@
 	display: flex;
 	gap: 8px;
 	flex-wrap: wrap;
+	justify-content: center;
 }
 
 .tab {
@@ -37,4 +38,14 @@
 	background: var(--accent);
 	color: var(--color-white);
 	border-color: var(--accent);
+}
+
+.header {
+	width: 100%;
+}
+
+.title {
+	font-size: 24px;
+	font-weight: 600;
+	color: var(--text-primary);
 }

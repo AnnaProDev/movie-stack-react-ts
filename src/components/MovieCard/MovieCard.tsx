@@ -1,20 +1,26 @@
-import type { MoviesData } from '@/features/movies/moviesApi.types';
-import s from './MovieCard.module.css';
+import type { MoviesData } from "@/features/movies/moviesApi.types";
+import s from "./MovieCard.module.css";
+import { useSelector, useDispatch } from 'react-redux'
+import type { RootState } from "@/store/store";
+import { toggleFavorite } from "@/store/favoritesSlice";
 
 type Props = {
-	movie: MoviesData
+	movie: MoviesData;
 };
 
+export const MovieCard = ({ movie }: Props) => {
 
-export const MovieCard = ({ movie } :Props) => {
+  const dispatch = useDispatch();
+  const favorites = useSelector((state: RootState) => state.favorites.movies);
+  const isFavorite = favorites.some((m) => m.id === movie.id);
+
 
 	const getBadgeColor = (rating: number) => {
-      if (rating >= 7) return s.high;
-      if (rating >= 5) return s.medium;
-      return s.low;
-   }; 
+		if (rating >= 7) return s.high;
+		if (rating >= 5) return s.medium;
+		return s.low;
+	};
 
-	
 	return (
 		<li className={s.card}>
 			<div className={s.posterFrame}>
@@ -28,15 +34,16 @@ export const MovieCard = ({ movie } :Props) => {
 						className={s.posterImg}
 					/>
 					<span className={`${s.badge} ${getBadgeColor(movie.vote_average)}`}>
-                  {movie.vote_average.toFixed(1)}
-               </span>
+						{movie.vote_average.toFixed(1)}
+					</span>
 				</a>
 				<button
 					type="button"
 					className={s.favoriteButton}
-					aria-pressed="false"
+					aria-pressed={isFavorite}
 					aria-label="Add to favorites"
 					title="Add to favorites"
+					onClick={() => dispatch(toggleFavorite(movie))}
 				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"

@@ -1,7 +1,8 @@
 import s from "./CategoryPage.module.css";
 import { useState } from "react";
 import { MovieList } from "@/components/MovieList/MovieList";
-import type { MovieCategory } from "@/common/types/types";
+import type { MovieCategory } from "@/common/enums";
+import { useGetMoviesByCategoryQuery } from "@/features/movies/moviesApi";
 
 export const CategoryPage = () => {
 	const tabs: { label: string; value: MovieCategory }[] = [
@@ -12,6 +13,13 @@ export const CategoryPage = () => {
 	];
 
 	const [active, setActive] = useState(tabs[0]);
+
+	const { data, isLoading, isError } = useGetMoviesByCategoryQuery(
+		active.value,
+	);
+
+	if (isLoading) return <div>Loading...</div>;
+	if (isError) return <div>Error loading movies</div>;
 
 	return (
 		<section className={s.section}>
@@ -26,9 +34,11 @@ export const CategoryPage = () => {
 					</button>
 				))}
 			</div>
+			<div className={s.header}>
+				<h2 className={s.title}>{active.label}</h2>
+			</div>
 
-			<MovieList tab={active.label} category={active.value} />
-
+			<MovieList data={data?.results} />
 		</section>
 	);
 };

@@ -1,29 +1,20 @@
 import type { MoviesData } from "@/features/movies/moviesApi.types";
 import { MovieCard } from "@/components/MovieCard/MovieCard";
 import s from "./MovieList.module.css";
-import type { MovieCategory } from "@/common/types/types";
-import { useGetMoviesByCategoryQuery } from "@/features/movies/moviesApi";
+
 
 type MovieListProps = {
-	tab: string;
-	category: MovieCategory;
+	data: MoviesData[] | undefined;
 };
 
-export const MovieList = ({ category, tab }: MovieListProps) => {
+export const MovieList = ({ data}: MovieListProps) => {
 
-	const { data, isLoading, isError } = useGetMoviesByCategoryQuery(category);
-
-  if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>Error loading movies</div>;
 	
 	return (
 		<>
 			<div>
-				<div className={s.header}>
-					<h2 className={s.title}>{tab}</h2>
-				</div>
 				<ul className={s.grid}>
-					{data?.results.map((movie: MoviesData) => (
+					{data?.map((movie: MoviesData) => (
 						<MovieCard key={movie.id} movie={movie} />
 					))}
 				</ul>

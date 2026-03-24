@@ -113,3 +113,10 @@
 	color: var(--color-red-600);
 	transform: scale(1.1);
 }
+
+.favoriteButton[aria-pressed="true"] {
+	background-color: var(--bg-card);
+	color: var(--color-red-600);
+	opacity: 1;
+	transform: translateY(0) scale(1.1);
+}

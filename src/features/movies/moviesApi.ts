@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import type { MoviesResponse } from "./moviesApi.types";
-import type { MovieCategory } from "@/common/types/types";
+import type { MovieCategory } from "@/common/enums";
 
 export const moviesApi = createApi({
   reducerPath: "moviesApi",
