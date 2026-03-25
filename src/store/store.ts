@@ -1,17 +1,17 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { moviesApi } from "../features/movies/moviesApi";
 import themeReducer from "./themeSlice";
 import favoritesReducer from "./favoritesSlice";
+import { baseApi } from "@/app/api/baseApi";
 
 
 export const store = configureStore({
 	reducer: {
-		[moviesApi.reducerPath]: moviesApi.reducer,
+		[baseApi.reducerPath]: baseApi.reducer,
 		theme: themeReducer,
 		favorites: favoritesReducer,
 	},
 	middleware: (getDefaultMiddleware) =>
-		getDefaultMiddleware().concat(moviesApi.middleware),
+		getDefaultMiddleware().concat(baseApi.middleware),
 });
 
 

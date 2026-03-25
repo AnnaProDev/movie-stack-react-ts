@@ -1,15 +1,12 @@
-import type { MoviesData } from "@/features/movies/moviesApi.types";
+import type { MoviesData } from "@/features/moviesApi/moviesApi.types";
 import { MovieCard } from "@/components/MovieCard/MovieCard";
 import s from "./MovieList.module.css";
-
 
 type MovieListProps = {
 	data: MoviesData[] | undefined;
 };
 
-export const MovieList = ({ data}: MovieListProps) => {
-
-	
+export const MovieList = ({ data }: MovieListProps) => {
 	return (
 		<>
 			<div>
@@ -21,7 +18,7 @@ export const MovieList = ({ data}: MovieListProps) => {
 			</div>
 
 			<div className={s.container}>
-				<div className={s.pagination}></div>
+				<div className={s.pagination}>1 2 3</div>
 			</div>
 		</>
 	);

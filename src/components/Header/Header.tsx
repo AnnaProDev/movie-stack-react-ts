@@ -4,9 +4,7 @@ import s from "./Header.module.css";
 import tmdbLogo from "../../assets/tmdb-logo.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleTheme } from "@/store/themeSlice";
-import { useEffect } from "react";
 import type { RootState } from "../../store/store";
-
 
 const navItems = [
 	{ to: Path.Main, label: "Main" },
@@ -21,9 +19,8 @@ export const Header = () => {
 		return state.theme.mode;
 	});
 
-	useEffect(() => {
-		document.body.setAttribute("data-theme", theme);
-	}, [theme]);
+	document.body.setAttribute("data-theme", theme);
+
 	const dispatch = useDispatch();
 
 	return (
@@ -48,8 +45,6 @@ export const Header = () => {
 					onClick={() => dispatch(toggleTheme())}
 					type="button"
 					className={s.buttonTheme}
-					aria-label="Переключить на тёмную тему"
-					title="Переключить на тёмную тему"
 				>
 					{theme === "light" ? "🌙" : "☀️"}
 				</button>

@@ -1,4 +1,4 @@
-import type { MoviesData } from "@/features/movies/moviesApi.types";
+import type { MoviesData } from "@/features/moviesApi/moviesApi.types";
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
@@ -8,7 +8,9 @@ const loadFavorites = (): MoviesData[] => {
 
 export const favoritesSlice = createSlice({
 	name: "favorites",
-	initialState: { movies: loadFavorites() },
+	initialState: {
+		movies: loadFavorites(),
+	},
 	reducers: {
 		toggleFavorite: (state, action: PayloadAction<MoviesData>) => {
 			const exists = state.movies.some(

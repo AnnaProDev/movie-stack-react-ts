@@ -2,7 +2,8 @@ import s from "./CategoryPage.module.css";
 import { useState } from "react";
 import { MovieList } from "@/components/MovieList/MovieList";
 import type { MovieCategory } from "@/common/enums";
-import { useGetMoviesByCategoryQuery } from "@/features/movies/moviesApi";
+import { useGetMoviesByCategoryQuery } from "@/features/moviesApi/moviesApi";
+import { Loading } from "@/components/Loading/Loading";
 
 export const CategoryPage = () => {
 	const tabs: { label: string; value: MovieCategory }[] = [
@@ -18,8 +19,8 @@ export const CategoryPage = () => {
 		active.value,
 	);
 
-	if (isLoading) return <div>Loading...</div>;
-	if (isError) return <div>Error loading movies</div>;
+	if (isLoading) return <Loading />;
+	if (isError) return <p>Something went wrong</p>;
 
 	return (
 		<section className={s.section}>
@@ -37,7 +38,6 @@ export const CategoryPage = () => {
 			<div className={s.header}>
 				<h2 className={s.title}>{active.label}</h2>
 			</div>
-
 			<MovieList data={data?.results} />
 		</section>
 	);

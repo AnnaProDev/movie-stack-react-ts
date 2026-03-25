@@ -1,6 +1,6 @@
-import type { MoviesData } from "@/features/movies/moviesApi.types";
+import type { MoviesData } from "@/features/moviesApi/moviesApi.types";
 import s from "./MovieCard.module.css";
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from "react-redux";
 import type { RootState } from "@/store/store";
 import { toggleFavorite } from "@/store/favoritesSlice";
 
@@ -9,11 +9,9 @@ type Props = {
 };
 
 export const MovieCard = ({ movie }: Props) => {
-
-  const dispatch = useDispatch();
-  const favorites = useSelector((state: RootState) => state.favorites.movies);
-  const isFavorite = favorites.some((m) => m.id === movie.id);
-
+	const dispatch = useDispatch();
+	const favorites = useSelector((state: RootState) => state.favorites.movies);
+	const isFavorite = favorites.some((m) => m.id === movie.id);
 
 	const getBadgeColor = (rating: number) => {
 		if (rating >= 7) return s.high;

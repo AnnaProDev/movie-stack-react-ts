@@ -49,3 +49,9 @@
 	font-weight: 600;
 	color: var(--text-primary);
 }
+
+.content {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
