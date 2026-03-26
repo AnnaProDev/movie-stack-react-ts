@@ -7,12 +7,20 @@
 }
 
 .pagination {
+	padding: 30px;
 	display: flex;
 	gap: 8px;
 	justify-content: center;
 }
 
-.pageButton, select {
+
+.pageButton{
+	font-size: 20px;
+	color: var(--text-primary);
+}
+
+.pageButton,
+select {
 	margin: 0 4px;
 	padding: 4px 10px;
 	background: var(--card-bg);
@@ -22,8 +30,9 @@
 }
 
 .pageButtonActive {
-	background: var(--card-bg);
+	background: var(--accent);
 	cursor: default;
+	color: var(--color-white);
 }
 
 .ellipsis {

@@ -1,43 +1,94 @@
-import { useState } from "react";
+import { useState, type ChangeEvent } from "react";
 import s from "./SearchPage.module.css";
 import { useSearchMoviesQuery } from "@/features/moviesApi/moviesApi";
 import { MovieList } from "@/components/MovieList/MovieList";
 import { Loading } from "@/components/Loading/Loading";
 import { useDebounceValue } from "@/common/hooks/useDebounceValue";
+import { Pagination } from "@/components/Pagination/Pagination";
 
 export const SearchPage = () => {
 	const [searchTerm, setSearchTerm] = useState("");
-	const debounceSearch = useDebounceValue(searchTerm);
+	const debouncedSearch = useDebounceValue(searchTerm);
+	const [currentPage, setCurrentPage] = useState(1);
 
-	const { data, isLoading, isFetching } = useSearchMoviesQuery(debounceSearch);
+	const { data, isFetching } = useSearchMoviesQuery({
+		searchTerm: debouncedSearch,
+		page: currentPage,
+	});
+
+	const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+		setSearchTerm(e.target.value);
+		setCurrentPage(1);
+	};
+
+
+	const renderContent = () => {
+		const trimmedSearch = debouncedSearch.trim();
+		const movies = data?.results ?? [];
+
+		if (!trimmedSearch) {
+			return (
+				<div className={s.emptyMessage}>
+					Enter a movie title to start searching.
+				</div>
+			);
+		}
+
+		if (isFetching) return <Loading />;
+
+		if (movies.length === 0) {
+			return (
+				<div className={s.notFoundMessage}>
+					No movies found for "{trimmedSearch}".
+				</div>
+			);
+		}
+
+		return <MovieList data={movies} />;
+	};
+
+	const hasResults = debouncedSearch.trim() && !isFetching;
 
 	return (
 		<section className={s.section}>
-			<div className="container">
-				<div className={s.header}>
+			<div className={s.container}>
+				<header className={s.header}>
 					<h2 className={s.title}>Search Results</h2>
-				</div>
-				<form action="/search" className={s.form}>
+				</header>
+
+				<form className={s.form} onSubmit={(e) => e.preventDefault()}>
 					<input
 						type="search"
 						className={s.input}
 						placeholder="Search for movies..."
-						id="search"
-						onChange={(e) => {
-							setSearchTerm(e.currentTarget.value);
-						}}
 						value={searchTerm}
+						onChange={handleInputChange}
 					/>
-					<button type="submit" className={s.button} disabled>
+					<button
+						type="submit"
+						className={s.button}
+						disabled={!searchTerm.trim()}
+					>
 						Search
 					</button>
 				</form>
-				{!data?.results.length && !isLoading && (
+				{hasResults && (
 					<div className={s.emptyMessage}>
-						Enter a movie title to start searching.
+						Results for "{debouncedSearch.trim()}"
 					</div>
 				)}
-				{isFetching ? <Loading /> : <MovieList data={data?.results} />}
+
+				{renderContent()}
+
+				{data && data.total_pages > 1 && (
+					<div className={s.pagination}>
+						<Pagination
+							currentPage={currentPage}
+							setCurrentPage={setCurrentPage}
+							pagesCount={data.total_pages}
+						/>
+					</div>
+				)}
 			</div>
 		</section>
 	);

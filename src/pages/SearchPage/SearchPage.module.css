@@ -7,6 +7,7 @@
 	width: 1186px;
 }
 
+
 .header {
 	width: 100%;
 }
@@ -48,4 +49,24 @@
 	transition: background-color 0.2s ease;
 	font-weight: 600;
 	font-size: 18px;
+}
+
+.button:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+	box-shadow: none;
+}
+
+.emptyMessage {
+	margin-top: 20px;
+	font-size: 24px;
+	font-weight: 600;
+	color: var(--text-secondary);
+}
+
+.notFoundMessage {
+	margin-top: 20px;
+	font-size: 16px;
+	font-weight: 400;
+	color: var(--text-secondary);
 }

@@ -26,7 +26,9 @@ export const Header = () => {
 	return (
 		<header className={s.container}>
 			<nav className={s.nav}>
-				<img className={s.logo} src={tmdbLogo} alt="TMDB Logo" />
+				<a href="/">
+					<img className={s.logo} src={tmdbLogo} alt="TMDB Logo" />
+				</a>
 				<ul className={s.list}>
 					{navItems.map((item) => (
 						<li key={item.to}>

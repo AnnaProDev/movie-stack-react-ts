@@ -1,6 +1,7 @@
 import { Footer } from "@/components/Footer/Footer";
 import { Routing } from "../../common/routing/Routing";
 import { Header } from "../Header/Header";
+import { ToastContainer } from 'react-toastify'
 import s from "./App.module.css";
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
 				</div>
 				<Footer />
 			</div>
+			<ToastContainer />
 		</>
 	);
 }

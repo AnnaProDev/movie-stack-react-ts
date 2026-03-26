@@ -3,6 +3,7 @@ import s from "./MovieCard.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState } from "@/store/store";
 import { toggleFavorite } from "@/store/favoritesSlice";
+import noPoster from "../../assets/poster-placeholder.webp";
 
 type Props = {
 	movie: MoviesData;
@@ -26,11 +27,19 @@ export const MovieCard = ({ movie }: Props) => {
 					className={s.posterLink}
 					href={`https://www.themoviedb.org/movie/${movie.id}`}
 				>
-					<img
-						src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-						alt={movie.title}
-						className={s.posterImg}
-					/>
+					{movie.poster_path ? (
+						<img
+							src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+							alt={movie.title}
+							className={s.posterImg}
+						/>
+					) : (
+						<img
+							src={noPoster}
+							alt={movie.title}
+							className={s.posterImg}
+						/>
+					)}
 					<span className={`${s.badge} ${getBadgeColor(movie.vote_average)}`}>
 						{movie.vote_average.toFixed(1)}
 					</span>
