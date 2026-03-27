@@ -27,3 +27,21 @@ export type MovieSearchList = {
 	searchTerm: string;
 	page: number;
 };
+
+export type SortBy =
+	| "popularity.desc"
+	| "popularity.asc"
+	| "vote_average.desc"
+	| "vote_average.asc"
+	| "primary_release_date.desc"
+	| "primary_release_date.asc"
+	| "title.asc"
+	| "title.desc";
+
+export interface DiscoverMoviesParams {
+	page?: number;
+	sort_by?: SortBy;
+	vote_average__gte?: string; // Rating от
+	vote_average__lte?: string; // Rating до
+	with_genres?: string; // Жанры через запятую "28,12,16"
+}

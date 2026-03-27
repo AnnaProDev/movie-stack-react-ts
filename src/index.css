@@ -102,7 +102,7 @@ h6 {
 	--bg-secondary: #F0E8D8;
 	--bg-card: #FFFFFF;
 	--accent: #B85C2A;
-	--accent-hover: #2A6BB8;
+	--accent-hover:#ffcc80 ;
 	--accent-soft: rgba(27, 67, 50, 0.1);
 	--color-white: #fff;
 
@@ -121,7 +121,7 @@ h6 {
 	--bg-card: #2d6a4f;
 
 	--accent: #95d5b2;
-	--accent-hover: #ffcc80;
+	--accent-hover: #3fcd7f;
 	--nav-link-hover: #b7e4c7;
 	--accent-soft: rgba(149, 213, 178, 0.1);
 	--text-primary: #fdfaf5;

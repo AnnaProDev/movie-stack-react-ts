@@ -8,7 +8,7 @@ import { Pagination } from "@/components/Pagination/Pagination";
 
 export const SearchPage = () => {
 	const [searchTerm, setSearchTerm] = useState("");
-	const debouncedSearch = useDebounceValue(searchTerm);
+	const debouncedSearch = useDebounceValue(searchTerm, 700);
 	const [currentPage, setCurrentPage] = useState(1);
 
 	const { data, isFetching } = useSearchMoviesQuery({
@@ -79,7 +79,7 @@ export const SearchPage = () => {
 				)}
 
 				{renderContent()}
-
+				
 				{data && data.total_pages > 1 && (
 					<div className={s.pagination}>
 						<Pagination

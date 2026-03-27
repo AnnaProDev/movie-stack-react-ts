@@ -1,5 +1,10 @@
 import { baseApi } from "@/app/api/baseApi";
-import type { MovieCategoryList, MovieSearchList, MoviesResponse } from "./moviesApi.types";
+import type {
+	DiscoverMoviesParams,
+	MovieCategoryList,
+	MovieSearchList,
+	MoviesResponse,
+} from "./moviesApi.types";
 
 export const moviesApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
@@ -16,11 +21,20 @@ export const moviesApi = baseApi.injectEndpoints({
 				url: "search/movie",
 				params: {
 					query: body.searchTerm,
-					page: body.page
+					page: body.page,
+				},
+			}),
+		}),
+		filterMovies: build.query<MoviesResponse, DiscoverMoviesParams>({
+			query: (body) => ({
+				url: "discover/movie",
+				params: {
+					...body,
+					page: body.page,
 				},
 			}),
 		}),
 	}),
 });
 
-export const { useGetMoviesByCategoryQuery, useSearchMoviesQuery } = moviesApi;
+export const { useGetMoviesByCategoryQuery, useSearchMoviesQuery, useFilterMoviesQuery } = moviesApi;
