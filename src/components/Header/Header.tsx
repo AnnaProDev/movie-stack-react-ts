@@ -26,7 +26,11 @@ export const Header = () => {
 	return (
 		<header className={s.container}>
 			<nav className={s.nav}>
-				<a href="/">
+				<a
+					href="https://www.themoviedb.org/"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
 					<img className={s.logo} src={tmdbLogo} alt="TMDB Logo" />
 				</a>
 				<ul className={s.list}>
@@ -46,9 +50,10 @@ export const Header = () => {
 				<button
 					onClick={() => dispatch(toggleTheme())}
 					type="button"
-					className={s.buttonTheme}
+					aria-pressed={theme === "dark"}
+					className={`${s.switch} ${theme === "dark" ? s.active : ""}`}
 				>
-					{theme === "light" ? "🌙" : "☀️"}
+					<span className={s.thumb}></span>
 				</button>
 			</nav>
 		</header>

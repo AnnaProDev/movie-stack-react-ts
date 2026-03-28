@@ -8,7 +8,7 @@ import { Route, Routes } from "react-router-dom"
 
 export const Path = {
   Main: '/',
-  Category: '/category',
+  Category: '/movies',
   Filter: '/filter',
   Search: '/search',
   Favorites: '/favorites',

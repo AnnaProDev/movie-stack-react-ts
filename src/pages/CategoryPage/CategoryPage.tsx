@@ -23,13 +23,14 @@ export const CategoryPage = () => {
 		page: currentPage,
 	});
 
-	const handleTabClick = (tab: typeof tabs[0]) => {
+	const handleTabClick = (tab: (typeof tabs)[0]) => {
 		setActive(tab);
-		setCurrentPage(1); 
-	}
+		setCurrentPage(1);
+	};
 
 	if (isLoading) return <Loading />;
-	if (isError) return toast('Something went wrong', { type: 'error', theme: 'colored' });
+	if (isError)
+		return toast("Something went wrong", { type: "error", theme: "colored" });
 
 	return (
 		<section className={s.section}>
@@ -48,14 +49,13 @@ export const CategoryPage = () => {
 				<h2 className={s.title}>{active.label}</h2>
 			</div>
 			<MovieList data={data?.results ?? []} />
-			<div className={s.container}>
-				<div className={s.pagination}>
-					<Pagination
-						currentPage={currentPage}
-						setCurrentPage={setCurrentPage}
-						pagesCount={data?.total_pages || 1}
-					/>
-				</div>
+
+			<div className={s.pagination}>
+				<Pagination
+					currentPage={currentPage}
+					setCurrentPage={setCurrentPage}
+					pagesCount={data?.total_pages || 1}
+				/>
 			</div>
 		</section>
 	);

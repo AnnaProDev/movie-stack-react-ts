@@ -49,18 +49,48 @@
 	font-weight: 600;
 }
 
-.buttonTheme {
-	width: 40px;
-	height: 40px;
-	min-width: 40px;
-	padding: 0;
+
+.switch {
+	width: 52px;
+	height: 30px;
 	border-radius: 999px;
-	border-color: var(--accent);
-	background-color: var(--bg-primary);
-	font-size: 20px;
+	border: none;
+	cursor: pointer;
+	position: relative;
+	padding: 0;
+	background: var(--bg-card);
+	transition: background 0.4s ease;
+}
+
+.active {
+	background: var(--bg-primary);
+	box-shadow: 0 0 8px var(--accent);
+}
+
+.thumb {
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	background: var(--accent);
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 	transition:
-		background-color 0.2s ease,
-		border-color 0.2s ease,
-		color 0.2s ease,
-		transform 0.2s ease;
+		transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+		/* iOS bounce */ width 0.2s ease,
+		background 0.3s ease;
+}
+
+.active .thumb {
+	transform: translateX(22px);
+	background: var(--accent-hover);
+}
+
+.switch:active .thumb {
+	width: 28px;
+}
+
+.active:active .thumb {
+	transform: translateX(18px);
 }
