@@ -2,6 +2,7 @@ import { baseApi } from "@/app/api/baseApi";
 import type {
 	DiscoverMoviesParams,
 	MovieCategoryList,
+	MovieCredits,
 	MovieSearchList,
 	MoviesResponse,
 } from "./moviesApi.types";
@@ -34,6 +35,16 @@ export const moviesApi = baseApi.injectEndpoints({
 				},
 			}),
 		}),
+		getMovieDetails: build.query<MoviesResponse, string>({
+			query: (id) => ({
+				url: `movie/${id}`,
+			}),
+		}),
+		getMovieCredits: build.query<MovieCredits, string>({
+			query: (id) => ({
+				url: `movie/${id}/credits`,
+			}),
+		}),
 	}),
 });
 
@@ -41,4 +52,6 @@ export const {
 	useGetMoviesByCategoryQuery,
 	useGetSearchMoviesQuery,
 	useGetFilterMoviesQuery,
+	useGetMovieDetailsQuery,
+	useGetMovieCreditsQuery,
 } = moviesApi;

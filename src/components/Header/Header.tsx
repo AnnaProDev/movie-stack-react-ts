@@ -8,7 +8,7 @@ import type { RootState } from "../../store/store";
 
 const navItems = [
 	{ to: Path.Main, label: "Main" },
-	{ to: Path.Category, label: "Category" },
+	{ to: Path.MoviesDefault, label: "Category" },
 	{ to: Path.Filter, label: "Filter" },
 	{ to: Path.Search, label: "Search" },
 	{ to: Path.Favorites, label: "Favorites" },

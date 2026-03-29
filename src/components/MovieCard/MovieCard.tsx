@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import type { RootState } from "@/store/store";
 import { toggleFavorite } from "@/store/favoritesSlice";
 import noPoster from "../../assets/poster-placeholder.webp";
+import { Link } from "react-router-dom";
 
 
 type Props = {
@@ -24,9 +25,9 @@ export const MovieCard = ({ movie }: Props) => {
 	return (
 		<li className={s.card}>
 			<div className={s.posterFrame}>
-				<a
+				<Link
 					className={s.posterLink}
-					href={`https://www.themoviedb.org/movie/${movie.id}`}
+					to={`/movie/${movie.id}`}
 				>
 					{movie.poster_path ? (
 						<img
@@ -44,7 +45,7 @@ export const MovieCard = ({ movie }: Props) => {
 					<span className={`${s.badge} ${getBadgeColor(movie.vote_average)}`}>
 						{movie.vote_average.toFixed(1)}
 					</span>
-				</a>
+				</Link>
 				<button
 					type="button"
 					className={s.favoriteButton}

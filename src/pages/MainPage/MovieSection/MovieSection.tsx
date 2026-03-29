@@ -20,7 +20,7 @@ export const MovieSection = ({ category, title }: MovieSectionProps) => {
 			<div key={category} className={s.category}>
 				<div className={s.categoryHeader}>
 					<h3 className={s.categoryTitle}>{title}</h3>
-					<Link to={`/movies`}>
+					<Link to={`/movies/${category}`}>
 						<button type="button" className={s.viewMoreButton}>
 							View more
 						</button>
