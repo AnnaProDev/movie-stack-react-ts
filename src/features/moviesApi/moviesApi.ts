@@ -16,7 +16,7 @@ export const moviesApi = baseApi.injectEndpoints({
 				},
 			}),
 		}),
-		searchMovies: build.query<MoviesResponse, MovieSearchList>({
+		getSearchMovies: build.query<MoviesResponse, MovieSearchList>({
 			query: (body) => ({
 				url: "search/movie",
 				params: {
@@ -25,7 +25,7 @@ export const moviesApi = baseApi.injectEndpoints({
 				},
 			}),
 		}),
-		filterMovies: build.query<MoviesResponse, DiscoverMoviesParams>({
+		getFilterMovies: build.query<MoviesResponse, DiscoverMoviesParams>({
 			query: (body) => ({
 				url: "discover/movie",
 				params: {
@@ -37,4 +37,8 @@ export const moviesApi = baseApi.injectEndpoints({
 	}),
 });
 
-export const { useGetMoviesByCategoryQuery, useSearchMoviesQuery, useFilterMoviesQuery } = moviesApi;
+export const {
+	useGetMoviesByCategoryQuery,
+	useGetSearchMoviesQuery,
+	useGetFilterMoviesQuery,
+} = moviesApi;

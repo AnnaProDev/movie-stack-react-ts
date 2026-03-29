@@ -1,4 +1,4 @@
-import type { MovieCategory } from "@/common/enums";
+import type { MovieCategory, SortBy } from "@/common/enums";
 
 export type MoviesResponse = {
 	results: MoviesData[];
@@ -28,17 +28,7 @@ export type MovieSearchList = {
 	page: number;
 };
 
-export type SortBy =
-	| "popularity.desc"
-	| "popularity.asc"
-	| "vote_average.desc"
-	| "vote_average.asc"
-	| "primary_release_date.desc"
-	| "primary_release_date.asc"
-	| "title.asc"
-	| "title.desc";
-
-export interface DiscoverMoviesParams {
+export type DiscoverMoviesParams = {
 	page?: number;
 	sort_by?: SortBy;
 	vote_average__gte?: string; // Rating от

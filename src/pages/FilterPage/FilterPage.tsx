@@ -2,9 +2,9 @@ import { Pagination } from "@/components/Pagination/Pagination";
 import s from "./FilterPage.module.css";
 import { MovieList } from "@/components/MovieList/MovieList";
 import { useState } from "react";
-import { useFilterMoviesQuery } from "@/features/moviesApi/moviesApi";
+import { useGetFilterMoviesQuery } from "@/features/moviesApi/moviesApi";
 import { useDebounceValue } from "@/common/hooks/useDebounceValue";
-import type { SortBy } from "@/features/moviesApi/moviesApi.types";
+import type { SortBy } from "@/common/enums";
 
 export const FilterPage = () => {
 	const GENRES: { label: string; id: number }[] = [
@@ -38,7 +38,7 @@ export const FilterPage = () => {
 	const debouncedMinRating = useDebounceValue(minRating, 200);
 	const debouncedMaxRating = useDebounceValue(maxRating, 200);
 
-	const { data } = useFilterMoviesQuery({
+	const { data, isLoading} = useGetFilterMoviesQuery({
 		sort_by: sortBy,
 		vote_average__gte: debouncedMinRating,
 		vote_average__lte: debouncedMaxRating,
@@ -146,7 +146,7 @@ export const FilterPage = () => {
 				</div>
 			</aside>
 
-			<MovieList data={data?.results ?? []} />
+			<MovieList data={data?.results ?? []} isLoading={isLoading} />
 
 			<div className={s.pagination}>
 				<Pagination

@@ -1,8 +1,7 @@
 import { useState, type ChangeEvent } from "react";
 import s from "./SearchPage.module.css";
-import { useSearchMoviesQuery } from "@/features/moviesApi/moviesApi";
+import { useGetSearchMoviesQuery } from "@/features/moviesApi/moviesApi";
 import { MovieList } from "@/components/MovieList/MovieList";
-import { Loading } from "@/components/Loading/Loading";
 import { useDebounceValue } from "@/common/hooks/useDebounceValue";
 import { Pagination } from "@/components/Pagination/Pagination";
 
@@ -11,7 +10,7 @@ export const SearchPage = () => {
 	const debouncedSearch = useDebounceValue(searchTerm, 700);
 	const [currentPage, setCurrentPage] = useState(1);
 
-	const { data, isFetching } = useSearchMoviesQuery({
+	const { data, isFetching, isLoading } = useGetSearchMoviesQuery({
 		searchTerm: debouncedSearch,
 		page: currentPage,
 	});
@@ -34,7 +33,6 @@ export const SearchPage = () => {
 			);
 		}
 
-		if (isFetching) return <Loading />;
 
 		if (movies.length === 0) {
 			return (
@@ -44,7 +42,7 @@ export const SearchPage = () => {
 			);
 		}
 
-		return <MovieList data={movies} />;
+		return <MovieList data={movies} isLoading={isLoading} />;
 	};
 
 	const hasResults = debouncedSearch.trim() && !isFetching;

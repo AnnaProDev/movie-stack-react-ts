@@ -1,7 +1,7 @@
 import s from "./MainPage.module.css";
 import { SearchForm } from "../SearchPage/SearchForm/SearchForm";
 import type { MovieCategory } from "@/common/enums/enums";
-import { MovieSection } from "@/components/MovieList/MovieSection/MovieSection";
+import { MovieSection } from "./MovieSection/MovieSection";
 
 export const MainPage = () => {
 	const tabs: { label: string; value: MovieCategory }[] = [

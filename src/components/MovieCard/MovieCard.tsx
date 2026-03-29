@@ -5,6 +5,7 @@ import type { RootState } from "@/store/store";
 import { toggleFavorite } from "@/store/favoritesSlice";
 import noPoster from "../../assets/poster-placeholder.webp";
 
+
 type Props = {
 	movie: MoviesData;
 };
@@ -32,7 +33,7 @@ export const MovieCard = ({ movie }: Props) => {
 							src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
 							alt={movie.title}
 							className={s.posterImg}
-						/>
+						/> 
 					) : (
 						<img
 							src={noPoster}

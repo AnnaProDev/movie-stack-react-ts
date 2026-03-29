@@ -1,1 +1,1 @@
-export type { MovieCategory } from "./enums";
+export type { MovieCategory, SortBy } from "./enums";

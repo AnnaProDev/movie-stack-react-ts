@@ -3,7 +3,6 @@ import { useState } from "react";
 import { MovieList } from "@/components/MovieList/MovieList";
 import type { MovieCategory } from "@/common/enums";
 import { useGetMoviesByCategoryQuery } from "@/features/moviesApi/moviesApi";
-import { Loading } from "@/components/Loading/Loading";
 import { Pagination } from "@/components/Pagination/Pagination";
 import { toast } from "react-toastify/unstyled";
 
@@ -28,7 +27,6 @@ export const CategoryPage = () => {
 		setCurrentPage(1);
 	};
 
-	if (isLoading) return <Loading />;
 	if (isError)
 		return toast("Something went wrong", { type: "error", theme: "colored" });
 
@@ -48,8 +46,7 @@ export const CategoryPage = () => {
 			<div className={s.header}>
 				<h2 className={s.title}>{active.label}</h2>
 			</div>
-			<MovieList data={data?.results ?? []} />
-
+			<MovieList data={data?.results ?? []} isLoading={isLoading} />
 			<div className={s.pagination}>
 				<Pagination
 					currentPage={currentPage}
