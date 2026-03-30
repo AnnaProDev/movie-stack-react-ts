@@ -1,15 +1,9 @@
 import s from "./MainPage.module.css";
-import { SearchForm } from "../SearchPage/SearchForm/SearchForm";
-import type { MovieCategory } from "@/common/enums/enums";
+import { SearchForm } from "./SearchForm/SearchForm";
 import { MovieSection } from "./MovieSection/MovieSection";
+import { MOVIE_TABS } from "@/common/constants/tabs";
 
 export const MainPage = () => {
-	const tabs: { label: string; value: MovieCategory }[] = [
-		{ label: "Popular Movies", value: "popular" },
-		{ label: "Top Rated Movies", value: "top_rated" },
-		{ label: "Upcoming Movies", value: "upcoming" },
-		{ label: "Now Playing Movies", value: "now_playing" },
-	];
 
 	return (
 		<section className={s.page}>
@@ -29,11 +23,12 @@ export const MainPage = () => {
 				</div>
 			</div>
 			<div className={s.categories}>
-				{tabs.map((tab) => (
+				{MOVIE_TABS.map((tab) => (
 					<MovieSection
 						key={tab.value}
 						category={tab.value}
 						title={tab.label}
+						link={tab.link}
 					/>
 				))}
 			</div>

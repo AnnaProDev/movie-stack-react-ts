@@ -7,6 +7,7 @@ import { useGlobalLoading } from "@/common/hooks/useGlobalLoading";
 import { LinearProgress } from "../LinearProgress/LinearProgress";
 
 
+
 function App() {
 	const isGlobalLoading = useGlobalLoading()
 	return (

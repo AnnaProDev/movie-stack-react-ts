@@ -1,0 +1,1 @@
+export { MOVIE_TABS, type TabItem  } from "./tabs";

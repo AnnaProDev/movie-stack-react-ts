@@ -1,7 +1,7 @@
 import s from "./FavoritesPage.module.css";
 import { useSelector } from "react-redux";
 import type { RootState } from "@/store/store";
-import { MovieList } from "@/components/MovieList/MovieList";
+import { MovieList } from "@/components";
 
 export const FavoritesPage = () => {
 	const favorites = useSelector((state: RootState) => state.favorites.movies);

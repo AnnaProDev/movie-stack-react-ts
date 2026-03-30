@@ -1,9 +1,8 @@
 import { useState, type ChangeEvent } from "react";
 import s from "./SearchPage.module.css";
-import { useGetSearchMoviesQuery } from "@/features/moviesApi/moviesApi";
-import { MovieList } from "@/components/MovieList/MovieList";
-import { useDebounceValue } from "@/common/hooks/useDebounceValue";
-import { Pagination } from "@/components/Pagination/Pagination";
+import { useGetSearchMoviesQuery } from "@/features";
+import { MovieList, Pagination } from "@/components";
+import { useDebounceValue } from "@/common/hooks";
 
 export const SearchPage = () => {
 	const [searchTerm, setSearchTerm] = useState("");
@@ -20,7 +19,6 @@ export const SearchPage = () => {
 		setCurrentPage(1);
 	};
 
-
 	const renderContent = () => {
 		const trimmedSearch = debouncedSearch.trim();
 		const movies = data?.results ?? [];
@@ -32,7 +30,6 @@ export const SearchPage = () => {
 				</div>
 			);
 		}
-
 
 		if (movies.length === 0) {
 			return (
@@ -58,7 +55,7 @@ export const SearchPage = () => {
 					<input
 						type="search"
 						className={s.input}
-						placeholder="Search for movies..."
+						placeholder="Search for movie..."
 						value={searchTerm}
 						onChange={handleInputChange}
 					/>
@@ -77,16 +74,14 @@ export const SearchPage = () => {
 				)}
 
 				{renderContent()}
-				
-				{data && data.total_pages > 1 && (
-					<div className={s.pagination}>
-						<Pagination
-							currentPage={currentPage}
-							setCurrentPage={setCurrentPage}
-							pagesCount={data.total_pages}
-						/>
-					</div>
-				)}
+
+				<div className={s.pagination}>
+					<Pagination
+						currentPage={currentPage}
+						setCurrentPage={setCurrentPage}
+						pagesCount={data?.total_pages || 1}
+					/>
+				</div>
 			</div>
 		</section>
 	);

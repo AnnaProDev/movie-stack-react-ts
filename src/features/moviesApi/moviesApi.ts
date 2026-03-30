@@ -45,6 +45,11 @@ export const moviesApi = baseApi.injectEndpoints({
 				url: `movie/${id}/credits`,
 			}),
 		}),
+		getSimilarMovies: build.query<MoviesResponse, string>({
+			query: (id) => ({
+				url: `movie/${id}/similar`,
+			}),
+		}),
 	}),
 });
 
@@ -54,4 +59,5 @@ export const {
 	useGetFilterMoviesQuery,
 	useGetMovieDetailsQuery,
 	useGetMovieCreditsQuery,
+	useGetSimilarMoviesQuery
 } = moviesApi;

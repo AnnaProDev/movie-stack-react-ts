@@ -1,7 +1,7 @@
 import type { MoviesData } from "@/features/moviesApi/moviesApi.types";
 import { MovieCard } from "@/components/MovieCard/MovieCard";
 import s from "./MovieList.module.css";
-import { MovieCardSkeleton } from "../MovieCard/MovieCardSkeleton";
+import { MovieCardSkeleton } from "./MovieCardSkeleton";
 
 type MovieListProps = {
 	data: MoviesData[];

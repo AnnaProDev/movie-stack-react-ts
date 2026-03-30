@@ -5,7 +5,7 @@ import type { RootState } from "@/store/store";
 import { toggleFavorite } from "@/store/favoritesSlice";
 import noPoster from "../../assets/poster-placeholder.webp";
 import { Link } from "react-router-dom";
-
+import { getBadgeColor } from "@/utils";
 
 type Props = {
 	movie: MoviesData;
@@ -16,33 +16,23 @@ export const MovieCard = ({ movie }: Props) => {
 	const favorites = useSelector((state: RootState) => state.favorites.movies);
 	const isFavorite = favorites.some((m) => m.id === movie.id);
 
-	const getBadgeColor = (rating: number) => {
-		if (rating >= 7) return s.high;
-		if (rating >= 5) return s.medium;
-		return s.low;
-	};
-
 	return (
 		<li className={s.card}>
 			<div className={s.posterFrame}>
-				<Link
-					className={s.posterLink}
-					to={`/movie/${movie.id}`}
-				>
+				<Link className={s.posterLink} to={`/movie/${movie.id}`}>
 					{movie.poster_path ? (
 						<img
 							src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
 							alt={movie.title}
 							className={s.posterImg}
-						/> 
-					) : (
-						<img
-							src={noPoster}
-							alt={movie.title}
-							className={s.posterImg}
 						/>
+					) : (
+						<img src={noPoster} alt={movie.title} className={s.posterImg} />
 					)}
-					<span className={`${s.badge} ${getBadgeColor(movie.vote_average)}`}>
+					<span
+						className={s.badge}
+						style={{ backgroundColor: getBadgeColor(movie.vote_average) }}
+					>
 						{movie.vote_average.toFixed(1)}
 					</span>
 				</Link>

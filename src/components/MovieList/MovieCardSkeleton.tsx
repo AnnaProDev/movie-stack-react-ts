@@ -1,6 +1,6 @@
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import s from "./MovieCard.module.css";
+import s from '@/components/MovieCard/MovieCard.module.css';
 
 export const MovieCardSkeleton = () => {
 	return (

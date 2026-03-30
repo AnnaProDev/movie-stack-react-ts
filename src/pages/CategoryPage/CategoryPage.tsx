@@ -1,23 +1,17 @@
 import s from "./CategoryPage.module.css";
 import { useState } from "react";
-import { MovieList } from "@/components/MovieList/MovieList";
+import { MovieList, Pagination } from "@/components";
 import type { MovieCategory } from "@/common/enums";
-import { useGetMoviesByCategoryQuery } from "@/features/moviesApi/moviesApi";
-import { Pagination } from "@/components/Pagination/Pagination";
+import { useGetMoviesByCategoryQuery } from "@/features";
 import { useNavigate, useParams } from "react-router-dom";
+import { MOVIE_TABS, type TabItem  } from "@/common/constants";
 
-const tabs: { label: string; value: MovieCategory }[] = [
-	{ label: "Popular Movies", value: "popular" },
-	{ label: "Top Rated Movies", value: "top_rated" },
-	{ label: "Upcoming Movies", value: "upcoming" },
-	{ label: "Now Playing Movies", value: "now_playing" },
-];
 
 export const CategoryPage = () => {
 	const { category } = useParams<{ category: MovieCategory }>();
 	const navigate = useNavigate();
 
-	const activeTab = tabs.find((t) => t.value === category) ?? tabs[0];
+	const activeTab = MOVIE_TABS.find((t) => t.link === category) ?? MOVIE_TABS[0];
 
 	const [currentPage, setCurrentPage] = useState(1);
 
@@ -26,15 +20,15 @@ export const CategoryPage = () => {
 		page: currentPage,
 	});
 
-	const handleTabClick = (tab: (typeof tabs)[0]) => {
-		navigate(`/movies/${tab.value}`);
+	const handleTabClick = (tab: TabItem) => {
+		navigate(`/movies/${tab.link}`);
 		setCurrentPage(1);
 	};
 
 	return (
 		<section className={s.section}>
 			<div className={s.tabs}>
-				{tabs.map((tab) => (
+				{MOVIE_TABS.map((tab) => (
 					<button
 						key={tab.value}
 						className={`${s.tab} ${activeTab.value === tab.value ? s.active : ""}`}

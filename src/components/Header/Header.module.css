@@ -1,6 +1,6 @@
 .container {
 	border-bottom: 1px solid var(--border);
-	height: 100px;
+	height: 80px;
 	font-size: 22px;
 	width: 100%;
 	background-color: var(--bg-secondary);

@@ -110,10 +110,7 @@ h6 {
 	--text-primary: #2C1810;
 	--text-secondary: #8A6A50;
 
-	--border: rgba(184, 92, 42, 0.15);
-	--color-green-600: #16a34a;
-	--color-yellow-400: #facc15;
-	--color-red-600: #dc2626;
+	--border: rgba(149, 74, 33, 0.15);
 }
 
 [data-theme="dark"] {

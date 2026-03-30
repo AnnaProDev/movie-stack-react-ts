@@ -3,6 +3,8 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	flex-direction: column;
+	gap: 20px;
 	border-top: 1px solid var(--border);
 	padding: 40px 80px;
 	background-color: var(--bg-secondary);
@@ -10,4 +12,76 @@
 	font-size: 16px;
 	font-weight: 600;
 	color: var(--text-primary);
+}
+
+.socialLinks {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.socialLink {
+	padding: 8px 16px;
+	border-radius: 999px;
+	border: 2px solid var(--border);
+	background-color: var(--bg-secondary);
+	color: var(--text-primary);
+	cursor: pointer;
+	transition: all 0.2s ease;
+	font-weight: 600;
+	font-size: 14px;
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+}
+
+.socialLink:hover {
+	background-color: var(--accent);
+	color: var(--color-white);
+	.icon {
+		color: var(--color-white);
+	}
+}
+
+.copyright {
+	color: var(--text-primary);
+}
+
+.icon {
+	width: 1.3rem;
+	height: 1.3rem;
+	color: var(--text-primary);
+	transition:
+		color 0.2s ease,
+		transform 0.2s ease;
+}
+.info {
+	color: var(--text-primary);
+}
+
+.heart {
+	display: inline-block;
+	animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+	0% {
+		transform: scale(1);
+	}
+	14% {
+		transform: scale(1.1);
+	}
+	28% {
+		transform: scale(1);
+	}
+	42% {
+		transform: scale(1.1);
+	}
+	70% {
+		transform: scale(1);
+	}
+}
+
+.author {
+	font-weight: 700;
 }

@@ -1,2 +1,2 @@
-export useDebounceValue from "./useDebounceValue";
-export useGlobalLoading from "./useGlobalLoading";
+export * from "./useDebounceValue";
+export * from "./useGlobalLoading";

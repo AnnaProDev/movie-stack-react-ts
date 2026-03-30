@@ -1,5 +1,5 @@
-import { NavLink } from "react-router";
-import { Path } from "@/common/routing/Routing";
+import { Link, NavLink } from "react-router";
+import { PATH } from "@/common/constants/path";
 import s from "./Header.module.css";
 import tmdbLogo from "../../assets/tmdb-logo.svg";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,11 +7,11 @@ import { toggleTheme } from "@/store/themeSlice";
 import type { RootState } from "../../store/store";
 
 const navItems = [
-	{ to: Path.Main, label: "Main" },
-	{ to: Path.MoviesDefault, label: "Category" },
-	{ to: Path.Filter, label: "Filter" },
-	{ to: Path.Search, label: "Search" },
-	{ to: Path.Favorites, label: "Favorites" },
+	{ to: PATH.Main, label: "Main" },
+	{ to: PATH.MoviesDefault, label: "Category" },
+	{ to: PATH.Filter, label: "Filter" },
+	{ to: PATH.Search, label: "Search" },
+	{ to: PATH.Favorites, label: "Favorites" },
 ];
 
 export const Header = () => {
@@ -26,13 +26,9 @@ export const Header = () => {
 	return (
 		<header className={s.container}>
 			<nav className={s.nav}>
-				<a
-					href="https://www.themoviedb.org/"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
+				<Link to={"/"} className={s.logo}>
 					<img className={s.logo} src={tmdbLogo} alt="TMDB Logo" />
-				</a>
+				</Link>
 				<ul className={s.list}>
 					{navItems.map((item) => (
 						<li key={item.to}>

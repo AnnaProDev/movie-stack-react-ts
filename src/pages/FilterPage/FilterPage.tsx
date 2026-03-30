@@ -1,9 +1,8 @@
-import { Pagination } from "@/components/Pagination/Pagination";
+import { Pagination, MovieList } from "@/components";
 import s from "./FilterPage.module.css";
-import { MovieList } from "@/components/MovieList/MovieList";
 import { useState } from "react";
-import { useGetFilterMoviesQuery } from "@/features/moviesApi/moviesApi";
-import { useDebounceValue } from "@/common/hooks/useDebounceValue";
+import { useGetFilterMoviesQuery } from "@/features";
+import { useDebounceValue } from "@/common/hooks";
 import type { SortBy } from "@/common/enums";
 
 export const FilterPage = () => {

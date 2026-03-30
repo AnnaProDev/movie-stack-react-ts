@@ -53,19 +53,6 @@
 	right: 12px;
 }
 
-.low {
-   background-color: var(--color-red-600);
-}
-
-.medium {
-   background-color: var(--color-yellow-400);
-   color: #000; /* На желтом фоне черный текст читается лучше */
-}
-
-.high {
-   background-color: var(--color-green-600);
-} 
-
 .cardTitleLink {
 	display: inline-block;
 	text-decoration: none;

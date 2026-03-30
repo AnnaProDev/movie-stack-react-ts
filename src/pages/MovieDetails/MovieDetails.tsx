@@ -3,9 +3,12 @@ import s from "./MovieDetails.module.css";
 import {
 	useGetMovieCreditsQuery,
 	useGetMovieDetailsQuery,
-} from "@/features/moviesApi/moviesApi";
+	useGetSimilarMoviesQuery,
+} from "@/features";
 import noPhoto from "../../assets/actor-placeholder.webp";
 import noPoster from "../../assets/poster-placeholder.webp";
+import { MovieList } from "@/components";
+import { getBadgeColor } from "@/utils";
 
 const IMAGE_BASE = "https://image.tmdb.org/t/p/w500";
 
@@ -15,14 +18,10 @@ export const MovieDetails = () => {
 
 	const { data } = useGetMovieDetailsQuery(id!);
 	const { data: credits } = useGetMovieCreditsQuery(id!);
+	const { data: similar, isLoading } = useGetSimilarMoviesQuery(id!);
 
 	if (!data) return null;
 
-	const getBadgeColor = (rating: number) => {
-		if (rating >= 7) return s.high;
-		if (rating >= 5) return s.medium;
-		return s.low;
-	};
 
 	const runtime = `${Math.floor(data.runtime / 60)}h ${data.runtime % 60}m`;
 	const year = new Date(data.release_date).getFullYear();
@@ -46,7 +45,7 @@ export const MovieDetails = () => {
 
 					<div className={s.meta}>
 						<span>Release year: {year}</span>
-						<span className={`${s.rating} ${getBadgeColor(data.vote_average)}`}>
+						<span className={s.rating} style ={{ backgroundColor: getBadgeColor(data.vote_average) }}>
 							{data.vote_average.toFixed(1)}
 						</span>
 						<span>Runtime: {runtime}</span>
@@ -91,6 +90,17 @@ export const MovieDetails = () => {
 							<span className={s.actorCharacter}>{actor.character}</span>
 						</div>
 					))}
+				</div>
+			</div>
+
+			<div className={s.similarSection}>
+				<h2 className={s.sectionTitle}>Similar Movies</h2>
+				<div className={s.similarList}>
+					<MovieList
+						data={(similar?.results ?? []).slice(0, 6)}
+						columns={6}
+						isLoading={isLoading}
+					/>
 				</div>
 			</div>
 		</section>
