@@ -92,7 +92,7 @@
 .favoriteIcon {
 	width: 22px;
 	height: 26px;
-	fill: currentColor;
+	fill: #ef4444;
 }
 
 .favoriteButton:hover {
