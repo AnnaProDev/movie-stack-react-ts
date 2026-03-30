@@ -1,4 +1,4 @@
-import { Footer } from "@/components/Footer/Footer";
+import { Footer } from "@/components";
 import { Routing } from "../../common/routing/Routing";
 import { Header } from "../Header/Header";
 import { ToastContainer } from 'react-toastify'
